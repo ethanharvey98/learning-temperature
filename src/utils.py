@@ -15,5 +15,5 @@ def use_posterior(self, flag):
         if isinstance(child, layers.VariationalLinear):
             child.use_posterior = flag
             
-def flatten_params(model, excluded_params=['lengthscale_param', 'noise_param', 'outputscale_param', 'sigma_param']):
+def flatten_params(model, excluded_params=['lengthscale_param', 'noise_param', 'outputscale_param', 'sigma_param', 'temperature_param']):
     return torch.cat([param.view(-1) for name, param in model.named_parameters() if param.requires_grad and name not in excluded_params])
